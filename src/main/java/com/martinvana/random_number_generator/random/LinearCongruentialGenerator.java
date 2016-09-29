@@ -10,7 +10,7 @@ public class LinearCongruentialGenerator implements IRandom{
     private static final long seedUniquifier = 8682522807148012L;
     private static final double DOUBLE_UNIT = 0x1.0p-53; // 1.0 / (1L << 53)
 
-    protected long seed;
+    private long seed;
 
     public LinearCongruentialGenerator() {
         this(seedUniquifier ^ System.nanoTime());
