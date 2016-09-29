@@ -1,6 +1,8 @@
 # Random Number Generator
 
 [![Build Status](https://travis-ci.org/vanam/RandomNumberGenerator.svg?branch=master)](https://travis-ci.org/vanam/RandomNumberGenerator)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/vanam/RandomNumberGenerator/blob/master/LICENSE)
+
 
 This project utilize several rather simple pseudo-random number generators to generate numbers that are distributed in a given way. 
 
