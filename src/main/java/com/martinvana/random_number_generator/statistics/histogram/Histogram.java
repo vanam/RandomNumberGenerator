@@ -30,7 +30,7 @@ public class Histogram extends AHistogram {
 
     private int getBucketIndex(double value) {
         // Is value out of bucket range?
-        if (Double.compare(value, minV) < 0 || Double.compare(value, maxV) > 0){
+        if (Double.compare(value, minV) < 0 || Double.compare(value, maxV) >= 0){
             return -1;
         }
 
