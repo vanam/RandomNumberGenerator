@@ -2,32 +2,22 @@ package com.martinvana.random_number_generator.random
 
 
 class LinearCongruentialGeneratorTest extends GroovyTestCase {
+    def random
+
     void setUp() {
         super.setUp()
-    }
-
-    void tearDown() {
-
+        random = new LinearCongruentialGenerator(0)
     }
 
     void testNextDouble() {
-        def x = 10
-        assert x == 10
-
-    }
-
-    void testNextDouble2() {
-        def x = 10
-        assert x == 10
-
+        assertEquals(random.nextDouble(), 1.2312141195458537e-8)
     }
 
     void testNextFloat() {
-        def x = 2
-        assert x == 2
+        assertEquals(random.nextFloat(), 0.0f)
     }
 
     void testNextInt() {
-
+        assertEquals(random.nextInt(), 11)
     }
 }
