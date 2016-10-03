@@ -16,7 +16,17 @@ public class ErlangDistribution extends ADistribution {
         setK(k);
         setLambda(lambda);
 
-        super.initHistogram();
+        initHistogram();
+    }
+
+    protected void initHistogram() {
+        double meanTheory = getMeanTheory();
+        double varianceTheory = getVarianceTheory();
+
+        double minV = Math.max(meanTheory - 2 * varianceTheory, 0);
+        double maxV = meanTheory + 2 * varianceTheory;
+
+        super.initHistogram(minV, maxV);
     }
 
     private void setLambda(double lambda) {

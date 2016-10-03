@@ -78,6 +78,10 @@ abstract class ADistribution implements IDistribution {
         double minV = meanTheory - 2 * varianceTheory;
         double maxV = meanTheory + 2 * varianceTheory;
 
+        initHistogram(minV, maxV);
+    }
+
+    protected void initHistogram(double minV, double maxV) {
         histogram.reset(histogramBuckets, minV, maxV);
     }
 
