@@ -2,22 +2,27 @@ package com.martinvana.random_number_generator.random
 
 
 class JavaRandomTest extends GroovyTestCase {
+    def javaRandom
     def random
 
     void setUp() {
         super.setUp()
-        random = new JavaRandom(0)
+        javaRandom = new JavaRandom(0)
+        random = new Random(0)
     }
 
     void testNextDouble() {
-        assertEquals(random.nextDouble(), 0.730967787376657)
+        def expectedValue = random.nextDouble();
+        assertEquals(expectedValue, javaRandom.nextDouble())
     }
 
     void testNextFloat() {
-        assertEquals(random.nextFloat(), 0.73096776f)
+        def expectedValue = random.nextFloat();
+        assertEquals(expectedValue, javaRandom.nextFloat())
     }
 
     void testNextInt() {
-        assertEquals(random.nextInt(), -1155484576)
+        def expectedValue = random.nextInt();
+        assertEquals(expectedValue, javaRandom.nextInt())
     }
 }

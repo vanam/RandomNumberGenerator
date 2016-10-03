@@ -10,14 +10,17 @@ class LinearCongruentialGeneratorTest extends GroovyTestCase {
     }
 
     void testNextDouble() {
-        assertEquals(random.nextDouble(), 1.2312141195458537e-8)
+        def expectedValue = 1.2312141195458537e-8;
+        assertEquals(expectedValue, random.nextDouble())
     }
 
     void testNextFloat() {
-        assertEquals(random.nextFloat(), 0.0f)
+        def expectedValue = 0.0f;
+        assertEquals(expectedValue, random.nextFloat())
     }
 
     void testNextInt() {
-        assertEquals(random.nextInt(), 11)
+        def expectedValue = 11;
+        assertEquals(expectedValue, random.nextInt())
     }
 }

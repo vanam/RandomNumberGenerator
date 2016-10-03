@@ -16,9 +16,9 @@ class OnlineStatisticsTest extends GroovyTestCase {
         def expectedVariance = 0
         def expectedStandardDeviation = 0
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedMean, onlineStatistics.getMean())
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testPush() {
@@ -29,9 +29,9 @@ class OnlineStatisticsTest extends GroovyTestCase {
         def expectedVariance = 0
         def expectedStandardDeviation = 0
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedMean, onlineStatistics.getMean())
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testPush1() {
@@ -43,9 +43,9 @@ class OnlineStatisticsTest extends GroovyTestCase {
         def expectedVariance = 50
         def expectedStandardDeviation = 7.0710678118654755
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedMean, onlineStatistics.getMean())
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testPush2() {
@@ -58,9 +58,9 @@ class OnlineStatisticsTest extends GroovyTestCase {
         def expectedVariance = 328358.3333333334
         def expectedStandardDeviation = 573.0255957052298
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedMean, onlineStatistics.getMean())
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testReset() {
@@ -79,9 +79,9 @@ class OnlineStatisticsTest extends GroovyTestCase {
         def expectedVariance = 0
         def expectedStandardDeviation = 0
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedMean, onlineStatistics.getMean())
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testGetMean() {
@@ -90,7 +90,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedMean = 0
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
+        assertEquals(expectedMean, onlineStatistics.getMean())
     }
 
     void testGetMean1() {
@@ -100,7 +100,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedMean = 0
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
+        assertEquals(expectedMean, onlineStatistics.getMean())
     }
 
     void testGetMean2() {
@@ -110,7 +110,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedMean = 0
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
+        assertEquals(expectedMean, onlineStatistics.getMean())
     }
 
     void testGetMean3() {
@@ -121,7 +121,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedMean = 67.5
 
-        assertEquals(onlineStatistics.getMean(), expectedMean)
+        assertEquals(expectedMean, onlineStatistics.getMean())
     }
 
     void testGetVariance() {
@@ -130,7 +130,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedVariance = 0
 
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
     }
 
     void testGetVariance1() {
@@ -140,7 +140,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedVariance = 0
 
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
     }
 
     void testGetVariance2() {
@@ -150,7 +150,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedVariance = 2
 
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
     }
 
     void testGetVariance3() {
@@ -161,7 +161,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedVariance = 12996.75
 
-        assertEquals(onlineStatistics.getVariance(), expectedVariance)
+        assertEquals(expectedVariance, onlineStatistics.getVariance())
     }
 
     void testGetStandardDeviation() {
@@ -170,7 +170,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedStandardDeviation = 0
 
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testGetStandardDeviation1() {
@@ -180,7 +180,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedStandardDeviation = 0
 
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testGetStandardDeviation2() {
@@ -190,7 +190,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedStandardDeviation = Math.sqrt(2)
 
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 
     void testGetStandardDeviation3() {
@@ -201,7 +201,7 @@ class OnlineStatisticsTest extends GroovyTestCase {
 
         def expectedStandardDeviation = Math.sqrt(12996.75)
 
-        assertEquals(onlineStatistics.getStandardDeviation(), expectedStandardDeviation)
+        assertEquals(expectedStandardDeviation, onlineStatistics.getStandardDeviation())
     }
 }
 

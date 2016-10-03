@@ -32,7 +32,7 @@ class HistogramTest extends GroovyTestCase {
                 "    7.0000 -     8.0000 [     0]:  (0.00%)\n" +
                 "    8.0000 -     9.0000 [     0]:  (0.00%)\n" +
                 "    9.0000 -    10.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testConstructor1() {
@@ -83,7 +83,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.2000 -     0.2000 [     0]:  (0.00%)\n" +
                 "    0.2000 -     0.6000 [     0]:  (0.00%)\n" +
                 "    0.6000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testGetStringHistogram1() {
@@ -99,7 +99,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.5000 -     0.0000 [     0]:  (0.00%)\n" +
                 "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                 "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testPush() {
@@ -116,7 +116,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.5000 -     0.0000 [     1]: ∎ (100.00%)\n" +
                 "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                 "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testPush1() {
@@ -134,7 +134,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.5000 -     0.0000 [     1]: ∎ (50.00%)\n" +
                 "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                 "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testPush2() {
@@ -152,7 +152,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.5000 -     0.0000 [     0]:  (0.00%)\n" +
                 "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                 "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testPush3() {
@@ -169,7 +169,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.5000 -     0.0000 [     0]:  (0.00%)\n" +
                 "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                 "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testPush4() {
@@ -187,7 +187,7 @@ class HistogramTest extends GroovyTestCase {
                 "   -0.5000 -     0.0000 [     0]:  (0.00%)\n" +
                 "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                 "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testReset() {
@@ -209,7 +209,7 @@ class HistogramTest extends GroovyTestCase {
                         "   -0.5000 -     0.0000 [     0]:  (0.00%)\n" +
                         "    0.0000 -     0.5000 [     0]:  (0.00%)\n" +
                         "    0.5000 -     1.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testReset1() {
@@ -231,7 +231,7 @@ class HistogramTest extends GroovyTestCase {
                 "    6.0000 -     7.0000 [     0]:  (0.00%)\n" +
                 "    7.0000 -     8.0000 [     0]:  (0.00%)\n" +
                 "    8.0000 -     9.0000 [     0]:  (0.00%)\n"
-        assertEquals(histogram.getStringHistogram(), expectedOutput)
+        assertEquals(expectedOutput, histogram.getStringHistogram())
     }
 
     void testToString() {
