@@ -6,7 +6,7 @@ import com.martinvana.random_number_generator.statistics.histogram.IHistogram;
 
 
 abstract class ADistribution implements IDistribution {
-    private static final int histogramBuckets = 25;
+    private static final int defaultHistogramBuckets = 20;
 
     protected IRandom random;
     protected IStatistics statistics;
@@ -78,10 +78,10 @@ abstract class ADistribution implements IDistribution {
         double minV = meanTheory - 2 * varianceTheory;
         double maxV = meanTheory + 2 * varianceTheory;
 
-        initHistogram(minV, maxV);
+        initHistogram(defaultHistogramBuckets, minV, maxV);
     }
 
-    protected void initHistogram(double minV, double maxV) {
+    protected void initHistogram(int histogramBuckets, double minV, double maxV) {
         histogram.reset(histogramBuckets, minV, maxV);
     }
 

@@ -7,6 +7,8 @@ import com.martinvana.random_number_generator.statistics.histogram.IHistogram;
 
 
 public class ErlangDistribution extends ADistribution {
+    private static final int histogramBuckets = 25;
+
     private int k;
     private double lambda;
 
@@ -26,7 +28,7 @@ public class ErlangDistribution extends ADistribution {
         double minV = Math.max(meanTheory - 2 * varianceTheory, 0);
         double maxV = meanTheory + 2 * varianceTheory;
 
-        super.initHistogram(minV, maxV);
+        super.initHistogram(histogramBuckets, minV, maxV);
     }
 
     private void setLambda(double lambda) {
