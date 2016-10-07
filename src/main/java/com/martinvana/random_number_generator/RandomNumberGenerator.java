@@ -16,8 +16,6 @@ import java.util.Arrays;
 import org.apache.commons.cli.*;
 
 public class RandomNumberGenerator {
-    private static final int NUMBER_OF_VALUES = 1000000;
-
     private static final String RANDOM_GENERATOR_JAVA_RANDOM = "java-random";
     private static final String RANDOM_GENERATOR_JAVA_SECURE_RANDOM = "java-secure-random";
     private static final String RANDOM_GENERATOR_LINEAR_CONGRUENTIAL_GENERATOR = "linear-congruential-generator";
@@ -36,11 +34,12 @@ public class RandomNumberGenerator {
             PROBABILITY_DISTRIBUTION_ERLANG
     };
 
+    private static int numberOfValues = 1000000;
     private static String randomGenerator = RANDOM_GENERATOR_JAVA_RANDOM;
     private static String probabilityDistribution = PROBABILITY_DISTRIBUTION_ERLANG;
-    private static String[] probabilityDistributionArgs = { "2", "1.0"};
+    private static String [] probabilityDistributionArgs = { "2", "1.0"};
 
-    public static void main(String[] args) {
+    public static void main(String [] args) {
         Options options = setOptions();
         IDistribution distribution = null;
 
@@ -49,11 +48,7 @@ public class RandomNumberGenerator {
             distribution = init();
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-
-            // Print help
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp(100, "java -jar random-number-generator.jar", "\nDESCRIPTION", options, null, true);
-
+            printHelp(options);
             System.exit(1);
         }
 
@@ -130,11 +125,38 @@ public class RandomNumberGenerator {
         return val;
     }
 
+    private static void printHelp(Options options) {
+        HelpFormatter formatter = new HelpFormatter();
+        formatter.printHelp(120, "java -jar random-number-generator.jar", "\nDESCRIPTION", options, null, true);
+    }
+
     private static void processArgs(Options options, String[] args) throws ParseException {
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd;
 
         cmd = parser.parse(options, args);
+
+        // Parse help
+        if (cmd.hasOption("help")) {
+            printHelp(options);
+            System.exit(0);
+        }
+
+        // Parse number of values
+        if (cmd.hasOption("n")) {
+            String value = cmd.getOptionValue("n");
+
+            try {
+                numberOfValues = Integer.parseInt(value);
+
+                if (numberOfValues <= 0) {
+                    throw new NumberFormatException();
+                }
+            } catch (NumberFormatException e) {
+                throw new ParseException("Number of values has to be positive integer, '" + value + "' given\n");
+            }
+
+        }
 
         // Parse random number generator
         if (cmd.hasOption("random")) {
@@ -162,7 +184,7 @@ public class RandomNumberGenerator {
     }
 
     private static void run(IDistribution distribution) {
-        for (int i = 0; i < NUMBER_OF_VALUES; i++) {
+        for (int i = 0; i < numberOfValues; i++) {
             distribution.getValue();
         }
 
@@ -172,6 +194,15 @@ public class RandomNumberGenerator {
     private static Options setOptions() {
         Options options = new Options();
         Option option;
+
+        // Help
+        option = new Option("h", "help", false, "display help");
+        options.addOption(option);
+
+        // Number of values
+        option = new Option("n", true, "number of values");
+        option.setArgName("number");
+        options.addOption(option);
 
         // Random generator
         option = new Option("r", "random", true, "random number generator\n" + Arrays.toString(randomGenerators));

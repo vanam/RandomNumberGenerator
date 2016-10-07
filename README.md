@@ -17,10 +17,23 @@ This project utilize several rather simple pseudo-random number generators to ge
 * [Uniform distribution (continuous)](https://en.wikipedia.org/wiki/Uniform_distribution_(continuous))
 * [Erlang distribution](https://en.wikipedia.org/wiki/Erlang_distribution)
 
-## Example
+## Usage
+```
+usage: java -jar random-number-generator.jar [-e <k> <lambda>] [-h] [-n <number>] [-r <generator_name>] [-u <a> <b>]
+
+DESCRIPTION
+ -e,--erlang <k> <lambda>       Erlang probability distribution
+ -h,--help                      display help
+ -n <number>                    number of values
+ -r,--random <generator_name>   random number generator
+                                [java-random, java-secure-random, linear-congruential-generator]
+ -u,--uniform <a> <b>           Uniform probability distribution
+```
+
+### Example
 
 ```
-$ java -jar random-number-generator-1.0.jar -e 2 2.0
+$ java -jar random-number-generator.jar -e 2 2.0
 Statistical properties
 ----------------------
 # Theory
