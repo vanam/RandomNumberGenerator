@@ -14,11 +14,13 @@ This project utilize several rather simple pseudo-random number generators to ge
 
 ## Probability distributions
 
+* [Uniform distribution (continuous)](https://en.wikipedia.org/wiki/Uniform_distribution_(continuous))
 * [Erlang distribution](https://en.wikipedia.org/wiki/Erlang_distribution)
 
 ## Example
 
 ```
+$ java -jar random-number-generator-1.0.jar -e 2 2.0
 Statistical properties
 ----------------------
 # Theory
