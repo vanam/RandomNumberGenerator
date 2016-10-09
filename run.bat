@@ -1,1 +1,1 @@
-java -jar vsp.jar %*
+java -jar vss.jar %*
