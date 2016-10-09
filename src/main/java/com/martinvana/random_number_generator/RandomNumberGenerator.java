@@ -131,55 +131,42 @@ public class RandomNumberGenerator {
     }
 
     private static void processArgs(Options options, String[] args) throws ParseException {
-        CommandLineParser parser = new DefaultParser();
-        CommandLine cmd;
+        // Distribution is always Erlang
+        probabilityDistribution = PROBABILITY_DISTRIBUTION_ERLANG;
 
-        cmd = parser.parse(options, args);
+        // Erlang parameter 'k' is always two
+        probabilityDistributionArgs[0] = "2";
 
-        // Parse help
-        if (cmd.hasOption("help")) {
-            printHelp(options);
-            System.exit(0);
-        }
+        switch (args.length) {
+            case 0:
+                // No parameters provided
 
-        // Parse number of values
-        if (cmd.hasOption("n")) {
-            String value = cmd.getOptionValue("n");
+                // Generate second parameter 'lambda' from zero to three
+                JavaRandom rnd = new JavaRandom();
+                probabilityDistributionArgs[1] = "" + rnd.nextDouble() * 3;
 
-            try {
-                numberOfValues = Integer.parseInt(value);
+                break;
+            case 2:
+                // Exactly two parameters
 
-                if (numberOfValues <= 0) {
-                    throw new NumberFormatException();
+                // First parameter is number of values
+                try {
+                    numberOfValues = Integer.parseInt(args[0]);
+
+                    if (numberOfValues <= 0) {
+                        throw new NumberFormatException();
+                    }
+                } catch (NumberFormatException e) {
+                    throw new ParseException("Number of values has to be positive integer, '" + args[0] + "' given\n");
                 }
-            } catch (NumberFormatException e) {
-                throw new ParseException("Number of values has to be positive integer, '" + value + "' given\n");
-            }
 
-        }
+                // Second parameter is 'lambda'
+                probabilityDistributionArgs[1] = args[1];
 
-        // Parse random number generator
-        if (cmd.hasOption("random")) {
-            randomGenerator = cmd.getOptionValue("random");
-
-            if (!Arrays.asList(randomGenerators).contains(randomGenerator)) {
-                throw new ParseException("Unknown random number generator, '" + randomGenerator + "' given.");
-            }
-        }
-
-        int probabilityDistributionCount = 0;
-
-        // Parse probability distribution
-        for(String distribution : probabilityDistributions) {
-            if (cmd.hasOption(distribution)) {
-                probabilityDistribution = distribution;
-                probabilityDistributionArgs = cmd.getOptionValues(distribution);
-                probabilityDistributionCount++;
-            }
-        }
-
-        if (probabilityDistributionCount > 1) {
-            throw new ParseException("Too many probability distributions given.");
+                break;
+            default:
+                // Unexpected
+                throw new ParseException("Unexpected number of parameters, '" + args.length + "' given\n");
         }
     }
 

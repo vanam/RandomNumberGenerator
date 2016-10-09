@@ -56,17 +56,10 @@ abstract class ADistribution implements IDistribution {
     protected String getStringInfo() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append(String.format("Statistical properties%n"));
-        stringBuilder.append(String.format("----------------------%n"));
-        stringBuilder.append(String.format("# Theory%n"));
-        stringBuilder.append(String.format("# E  = %f%n", getMeanTheory()));
-        stringBuilder.append(String.format("# D  = %f%n", getVarianceTheory()));
-        stringBuilder.append(String.format("# SD = %f%n", getStandardDeviationTheory()));
-        stringBuilder.append(String.format("#%n"));
-        stringBuilder.append(String.format("# Calculated%n"));
-        stringBuilder.append(String.format("# E  = %f%n", getMeanCalculated()));
-        stringBuilder.append(String.format("# D  = %f%n", getVarianceCalculated()));
-        stringBuilder.append(String.format("# SD = %f%n", getStandardDeviationCalculated()));
+        stringBuilder.append(String.format("E_teorie=%f%n", getMeanTheory()));
+        stringBuilder.append(String.format("D_teorie=%f%n", getVarianceTheory()));
+        stringBuilder.append(String.format("E_vypocet=%f%n", getMeanCalculated()));
+        stringBuilder.append(String.format("D_vypocet=%f%n", getVarianceCalculated()));
 
         return stringBuilder.toString();
     }

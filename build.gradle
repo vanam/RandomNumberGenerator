@@ -1,5 +1,5 @@
 group 'com.martinvana'
-version '1.1'
+version '1.1-ZCU'
 
 apply plugin: 'java'
 apply plugin: 'groovy'

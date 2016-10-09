@@ -1,79 +1,72 @@
-# Random Number Generator
+# Random Number Generator - UWB version
 
-[![Build Status](https://travis-ci.org/vanam/RandomNumberGenerator.svg?branch=master)](https://travis-ci.org/vanam/RandomNumberGenerator)
+[![Build Status](https://travis-ci.org/vanam/RandomNumberGenerator.svg?branch=zcu)](https://travis-ci.org/vanam/RandomNumberGenerator)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/vanam/RandomNumberGenerator/blob/master/LICENSE)
 
 
 This project utilize several rather simple pseudo-random number generators to generate numbers that are distributed in a given way. Program outputs theoretical and calculate statistical properties, and histogram.  
 
+This branch contains altered version of program to conform rules enforced by project description at [The University of West Bohemia](https://www.zcu.cz/en/).
+
 ## Pseudo-random number generators
 
 * [java.util.Random](https://docs.oracle.com/javase/8/docs/api/java/util/Random.html)
-* [java.security.SecureRandom](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)
-* [Linear Congruential Generator](https://en.wikipedia.org/wiki/Linear_congruential_generator)
+* ~~[java.security.SecureRandom](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html)~~
+* ~~[Linear Congruential Generator](https://en.wikipedia.org/wiki/Linear_congruential_generator)~~
 
 ## Probability distributions
 
-* [Uniform distribution (continuous)](https://en.wikipedia.org/wiki/Uniform_distribution_(continuous))
+* ~~[Uniform distribution (continuous)](https://en.wikipedia.org/wiki/Uniform_distribution_(continuous))~~
 * [Erlang distribution](https://en.wikipedia.org/wiki/Erlang_distribution)
 
 ## Usage
+Default random number generator is `JavaRandom`. Default distribution is Erlang distribution. Default parameter *k=2*. If no parameters are provided, program generates random *lambda* parameter from 0 to 3. 
+
 ```
-usage: java -jar random-number-generator.jar [-e <k> <lambda>] [-h] [-n <number>] [-r <generator_name>] [-u <a> <b>]
+usage: java -jar random-number-generator.jar [<number> <lambda>]
 
 DESCRIPTION
- -e,--erlang <k> <lambda>       Erlang probability distribution
- -h,--help                      display help
- -n <number>                    number of values
- -r,--random <generator_name>   random number generator
-                                [java-random, java-secure-random, linear-congruential-generator]
- -u,--uniform <a> <b>           Uniform probability distribution
+ <lambda>                       Erlang probability distribution parameter
+ <number>                       number of values
 ```
 
 ### Example
 
 ```
-$ java -jar random-number-generator.jar -e 2 2.0
-Statistical properties
-----------------------
-# Theory
-# E  = 1.000000
-# D  = 0.500000
-# SD = 0.707107
-#
-# Calculated
-# E  = 0.996433
-# D  = 0.495580
-# SD = 0.703974
+$ java -jar random-number-generator.jar
+E_teorie=2.939729
+D_teorie=4.321003
+E_vypocet=2.935369
+D_vypocet=4.322020
 
 Histogram
 ---------
-# Number of values: 91062
-# 8938 values outside of min/max
-# Each ∎ represents a count of 79
-    0.0000 -     0.0800 [  1193]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (1.31%)
-    0.0800 -     0.1600 [  3054]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (3.35%)
-    0.1600 -     0.2400 [  4209]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (4.62%)
-    0.2400 -     0.3200 [  5098]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (5.60%)
-    0.3200 -     0.4000 [  5640]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (6.19%)
-    0.4000 -     0.4800 [  5722]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (6.28%)
-    0.4800 -     0.5600 [  5918]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (6.50%)
-    0.5600 -     0.6400 [  5885]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (6.46%)
-    0.6400 -     0.7200 [  5601]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (6.15%)
-    0.7200 -     0.8000 [  5292]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (5.81%)
-    0.8000 -     0.8800 [  4937]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (5.42%)
-    0.8800 -     0.9600 [  4706]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (5.17%)
-    0.9600 -     1.0400 [  4326]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (4.75%)
-    1.0400 -     1.1200 [  4074]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (4.47%)
-    1.1200 -     1.2000 [  3749]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (4.12%)
-    1.2000 -     1.2800 [  3279]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (3.60%)
-    1.2800 -     1.3600 [  3086]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (3.39%)
-    1.3600 -     1.4400 [  2717]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (2.98%)
-    1.4400 -     1.5200 [  2409]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (2.65%)
-    1.5200 -     1.6000 [  2207]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (2.42%)
-    1.6000 -     1.6800 [  1948]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (2.14%)
-    1.6800 -     1.7600 [  1827]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (2.01%)
-    1.7600 -     1.8400 [  1618]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (1.78%)
-    1.8400 -     1.9200 [  1370]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (1.50%)
-    1.9200 -     2.0000 [  1197]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (1.31%)
+# Number of values: 996684
+# 3316 values outside of min/max
+# Each ∎ represents a count of 1534
+    0.0000 -     0.4633 [ 40758]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (4.09%)
+    0.4633 -     0.9265 [ 92437]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (9.27%)
+    0.9265 -     1.3898 [112499]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (11.29%)
+    1.3898 -     1.8531 [115044]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (11.54%)
+    1.8531 -     2.3163 [107774]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (10.81%)
+    2.3163 -     2.7796 [ 95901]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (9.62%)
+    2.7796 -     3.2429 [ 83131]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (8.34%)
+    3.2429 -     3.7062 [ 70053]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (7.03%)
+    3.7062 -     4.1694 [ 58119]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (5.83%)
+    4.1694 -     4.6327 [ 47146]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (4.73%)
+    4.6327 -     5.0960 [ 38040]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (3.82%)
+    5.0960 -     5.5592 [ 30413]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (3.05%)
+    5.5592 -     6.0225 [ 24036]: ∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎ (2.41%)
+    6.0225 -     6.4858 [ 19049]: ∎∎∎∎∎∎∎∎∎∎∎∎ (1.91%)
+    6.4858 -     6.9490 [ 14852]: ∎∎∎∎∎∎∎∎∎ (1.49%)
+    6.9490 -     7.4123 [ 11607]: ∎∎∎∎∎∎∎ (1.16%)
+    7.4123 -     7.8756 [  9103]: ∎∎∎∎∎ (0.91%)
+    7.8756 -     8.3388 [  7022]: ∎∎∎∎ (0.70%)
+    8.3388 -     8.8021 [  5455]: ∎∎∎ (0.55%)
+    8.8021 -     9.2654 [  4154]: ∎∎ (0.42%)
+    9.2654 -     9.7287 [  3229]: ∎∎ (0.32%)
+    9.7287 -    10.1919 [  2490]: ∎ (0.25%)
+   10.1919 -    10.6552 [  1877]: ∎ (0.19%)
+   10.6552 -    11.1185 [  1414]:  (0.14%)
+   11.1185 -    11.5817 [  1081]:  (0.11%)
 ```
