@@ -10,7 +10,7 @@ public class ErlangDistribution extends ADistribution {
     private static final int histogramBuckets = 25;
 
     private int k;
-    private double lambda;
+    private double mi;
 
     public ErlangDistribution(IRandom random, IStatistics statistics, IHistogram histogram, int k, double lambda) {
         super(random, statistics, histogram);
@@ -36,7 +36,7 @@ public class ErlangDistribution extends ADistribution {
             throw new IllegalArgumentException(String.format("Erlang parameter 'lambda' has to be positive double, %f given.", lambda));
         }
 
-        this.lambda = lambda;
+        this.mi = 1 / lambda;
     }
 
     private void setK(int k) {
@@ -49,13 +49,13 @@ public class ErlangDistribution extends ADistribution {
 
     @Override
     public double getMeanTheory() {
-        return k / lambda;
+        return k * mi;
     }
 
 
     @Override
     public double getVarianceTheory() {
-        return k / (lambda * lambda);
+        return k * mi * mi;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class ErlangDistribution extends ADistribution {
             randProduct *= random.nextDouble();
         }
 
-        return - Math.log(randProduct) / lambda;
+        return - Math.log(randProduct) * mi;
     }
 
 }
